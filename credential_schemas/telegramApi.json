@@ -1,0 +1,13 @@
+{
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "accessToken": {
+      "type": "string"
+    },
+    "baseUrl": {
+      "type": "string"
+    }
+  },
+  "required": []
+}

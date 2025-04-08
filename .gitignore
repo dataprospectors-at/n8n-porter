@@ -1,0 +1,12 @@
+.env
+workflows/
+.conda/
+.venv/
+.vscode/
+credentials.yaml
+__pycache__/
+.DS_Store
+data/
+servers.yaml
+resource_mapping.json
+.cursor

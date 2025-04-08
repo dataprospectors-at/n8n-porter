@@ -1,0 +1,18 @@
+{
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "apiKey": {
+      "type": "string"
+    },
+    "organizationId": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "apiKey"
+  ]
+}

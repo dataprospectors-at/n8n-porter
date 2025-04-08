@@ -1,0 +1,200 @@
+{
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "host": {
+      "type": "string"
+    },
+    "database": {
+      "type": "string"
+    },
+    "user": {
+      "type": "string"
+    },
+    "password": {
+      "type": "string"
+    },
+    "maxConnections": {
+      "type": "number"
+    },
+    "allowUnauthorizedCerts": {
+      "type": "boolean"
+    },
+    "ssl": {
+      "type": "string",
+      "enum": [
+        "allow",
+        "disable",
+        "require"
+      ]
+    },
+    "port": {
+      "type": "number"
+    },
+    "sshTunnel": {
+      "type": "boolean"
+    },
+    "sshAuthenticateWith": {
+      "type": "string",
+      "enum": [
+        "password",
+        "privateKey"
+      ]
+    },
+    "sshHost": {
+      "type": "string"
+    },
+    "sshPort": {
+      "type": "number"
+    },
+    "sshUser": {
+      "type": "string"
+    },
+    "sshPassword": {
+      "type": "string"
+    },
+    "privateKey": {
+      "type": "string"
+    },
+    "passphrase": {
+      "type": "string"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "allowUnauthorizedCerts": {
+            "enum": [
+              ""
+            ]
+          }
+        }
+      },
+      "then": {
+        "allOf": [
+          {
+            "required": [
+              "ssl"
+            ]
+          }
+        ]
+      },
+      "else": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "ssl"
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "sshTunnel": {
+            "enum": [
+              true
+            ]
+          }
+        }
+      },
+      "then": {
+        "allOf": [
+          {
+            "required": [
+              "sshAuthenticateWith"
+            ]
+          },
+          {
+            "required": [
+              "sshHost"
+            ]
+          },
+          {
+            "required": [
+              "sshPort"
+            ]
+          },
+          {
+            "required": [
+              "sshUser"
+            ]
+          },
+          {
+            "required": [
+              "sshPassword"
+            ]
+          },
+          {
+            "required": [
+              "privateKey"
+            ]
+          },
+          {
+            "required": [
+              "passphrase"
+            ]
+          }
+        ]
+      },
+      "else": {
+        "allOf": [
+          {
+            "not": {
+              "required": [
+                "sshAuthenticateWith"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "sshHost"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "sshPort"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "sshUser"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "sshPassword"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "privateKey"
+              ]
+            }
+          },
+          {
+            "not": {
+              "required": [
+                "passphrase"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "required": []
+}

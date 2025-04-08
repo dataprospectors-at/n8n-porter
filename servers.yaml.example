@@ -1,0 +1,12 @@
+servers:
+  cloud:
+    name: "N8N Cloud Instance"
+    api_key: "your_cloud_api_key_here"
+    url: "https://your.n8n.cloud/"
+    supports_projects: true
+  
+  local:
+    name: "Local Development"
+    api_key: "your_local_api_key_here"
+    url: "http://localhost:5678/" 
+    supports_projects: false
